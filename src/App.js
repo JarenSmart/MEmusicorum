@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 //Styles
 import "./styles/app.scss";
 //Components
@@ -8,10 +8,15 @@ import Song from "./components/Song";
 import data from './util';
 
 function App() {
+  //State
+  const [songs, setSongs] = useState(data());
+  const [currentSong, setCurrentSong] = useState(songs[6]);
+  const [isPlaying, setIsPlaying] = useState(false);
+
   return (
     <div className="App">
-      <Song />
-      <Player />
+      <Song currentSong={currentSong} />
+      <Player isPlaying={isPlaying} setIsPlaying={setIsPlaying} currentSong={currentSong} />
     </div>
   );
 }
