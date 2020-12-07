@@ -1,5 +1,6 @@
 .library {
     position: fixed;
+    // border-radius: 1rem;
     top: 0;
     left: 0;
     width: 20rem;
@@ -19,6 +20,7 @@
     display: flex;
     align-items: center;
     padding: 1rem 2rem 1rem 2rem;
+    transition: all 0.75s ease-out;
     cursor: pointer;
     img {
         width: 30%;
@@ -72,4 +74,10 @@
 .active-library {
     transform: translateX(0%);
     opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+    .library {
+        width: 100%;
+    }
 }

@@ -10,14 +10,17 @@ export const Library = ({
   libraryStatus,
 }) => {
   return (
-    <div className={`library ${libraryStatus ? "active-library" : ""}`}>
+    <div className={`library ${libraryStatus ? "active-library" : " "}`}>
       <h2>Library</h2>
       <div className="library-songs">
         {songs.map((song) => (
           <LibrarySong
-            song={song}
-            setCurrentSong={setCurrentSong}
             songs={songs}
+            cover={song.cover}
+            name={song.name}
+            artist={song.artist}
+            active={song.active}
+            setCurrentSong={setCurrentSong}
             setSongs={setSongs}
             id={song.id}
             key={song.id}

@@ -3,10 +3,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMusic } from "@fortawesome/free-solid-svg-icons";
 
 const Nav = ({ libraryStatus, setLibraryStatus }) => {
+  const openLibraryHandler = () => {
+    setLibraryStatus(!libraryStatus);
+  };
   return (
     <nav>
       <h1>MEmusicorum</h1>
-      <button onClick={() => setLibraryStatus(!libraryStatus)}>
+      <button
+        className={libraryStatus ? "library-active" : ""}
+        onClick={openLibraryHandler}
+      >
         Library
         <FontAwesomeIcon icon={faMusic} />
       </button>
