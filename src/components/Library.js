@@ -2,7 +2,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import React from "react";
 import LibrarySong from "./LibrarySong";
 
-export const Library = ({ songs, setCurrentSong }) => {
+export const Library = ({ songs, setCurrentSong, audioRef, isPlaying }) => {
   return (
     <div className="library">
       <h2>Library</h2>
@@ -14,8 +14,8 @@ export const Library = ({ songs, setCurrentSong }) => {
             songs={songs}
             id={song.id}
             key={song.id}
-            // audioRef={audioRef}
-            // isPlaying={isPlaying}
+            audioRef={audioRef}
+            isPlaying={isPlaying}
           />
         ))}
       </div>
