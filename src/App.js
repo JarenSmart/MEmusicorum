@@ -5,8 +5,10 @@ import "./styles/app.scss";
 import Player from "./components/Player";
 import Song from "./components/Song";
 import Library from "./components/Library"
+import Nav from "./components/Nav";
 //Util
 import data from './util';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 function App() {
   // Ref
@@ -20,6 +22,7 @@ function App() {
     currentTime: 0,
     duration: 0,
   });
+  const [libraryStatus, setLibraryStatus] = useState(false)
 
   // Handlers
   const timeUpdateHandler = (e) => {
@@ -30,9 +33,10 @@ function App() {
 
   return (
     <div className="App">
+      <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus}/>
       <Song currentSong={currentSong} />
       <Player audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} currentSong={currentSong} songInfo={songInfo} setSongInfo={setSongInfo} />
-      <Library songs={songs} setCurrentSong={setCurrentSong} audioRef={audioRef} isPlaying={isPlaying} setSongs={setSongs}/>
+      <Library songs={songs} setCurrentSong={setCurrentSong} audioRef={audioRef} isPlaying={isPlaying} setSongs={setSongs} libraryStatus={libraryStatus}/>
       <audio onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} ref={audioRef} src={currentSong.audio}></audio>
     </div>
   );

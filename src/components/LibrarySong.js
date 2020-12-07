@@ -13,20 +13,14 @@ const LibrarySong = ({
     setCurrentSong(song);
     audioRef.current.play();
     // Active song state
-    const newSongs = songs.map((song) => {
-      if (song.id === id) {
+    setSongs(
+      songs.map((targetSong) => {
         return {
-          ...song,
-          active: true,
+          ...targetSong,
+          active: targetSong.id === song.id,
         };
-      } else {
-        return {
-          ...song,
-          active: false,
-        };
-      }
-    });
-    setSongs(newSongs);
+      })
+    );
     // Check if song is playing
     if (isPlaying) {
       const playPromise = audioRef.current.play();

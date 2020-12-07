@@ -10,7 +10,7 @@ function music() {
         "https://dkihjuum4jcjr.cloudfront.net/ES_ITUNES/Before%20Chill/ES_Before%20Chill.mp3",
       color: ["#CB3030", "#4F2F44"],
       id: uuidv4(),
-      active: false,
+      active: true,
     },
     {
       name: "Beaver Creek",
@@ -20,7 +20,7 @@ function music() {
       audio: "https://mp3.chillhop.com/serve.php/?mp3=10075",
       color: ["#205950", "#2ab3bf"],
       id: uuidv4(),
-      active: true,
+      active: false,
     },
     {
       name: "Daylight",
