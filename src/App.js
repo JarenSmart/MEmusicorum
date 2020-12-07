@@ -6,9 +6,10 @@ import Player from "./components/Player";
 import Song from "./components/Song";
 import Library from "./components/Library"
 import Nav from "./components/Nav";
-//Util
-import data from './util';
-import { library } from '@fortawesome/fontawesome-svg-core';
+//Song Data
+import data from './data';
+// Util
+import {playAudio} from "./util"
 
 function App() {
   // Ref
@@ -31,13 +32,20 @@ function App() {
     setSongInfo({ ...songInfo, currentTime: current, duration });
   };
 
+  const songEndHandler = async () => {
+    let currentSongIndex = songs.findIndex((song) => song.id === currentSong.id)
+    await setCurrentSong(songs[(currentSongIndex + 1) % songs.length]);
+    playAudio(isPlaying, audioRef);
+    return;
+  }
+
   return (
     <div className="App">
       <Nav libraryStatus={libraryStatus} setLibraryStatus={setLibraryStatus}/>
       <Song currentSong={currentSong} />
-      <Player audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} currentSong={currentSong} songInfo={songInfo} setSongInfo={setSongInfo} />
+      <Player songs={songs} setSongs={setSongs} audioRef={audioRef} isPlaying={isPlaying} setIsPlaying={setIsPlaying} currentSong={currentSong} setCurrentSong={setCurrentSong} songInfo={songInfo} setSongInfo={setSongInfo} />
       <Library songs={songs} setCurrentSong={setCurrentSong} audioRef={audioRef} isPlaying={isPlaying} setSongs={setSongs} libraryStatus={libraryStatus}/>
-      <audio onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} ref={audioRef} src={currentSong.audio}></audio>
+      <audio onLoadedMetadata={timeUpdateHandler} onTimeUpdate={timeUpdateHandler} ref={audioRef} src={currentSong.audio} onEnded={songEndHandler}></audio>
     </div>
   );
 }
