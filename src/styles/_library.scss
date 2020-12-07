@@ -21,9 +21,9 @@
         width: 30%;
     }
     &:hover {
-        background: rgb(31, 36, 41);
+        background: rgb(147, 159, 170);
         color: white;
-        h3 {
+        h3, h4 {
             color: white;
         }
     }
@@ -56,4 +56,12 @@
     background-color: rgba(175, 175, 175, 0.5);
     border-radius: 20px;
     border: transparent;
+}
+
+.selected {
+    background: rgb(25, 31, 43);
+    h3, h4 {
+        color: white;
+
+    }
 }
